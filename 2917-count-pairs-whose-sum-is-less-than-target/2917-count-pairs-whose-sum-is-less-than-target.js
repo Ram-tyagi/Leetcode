@@ -4,19 +4,10 @@
  * @return {number}
  */
 var countPairs = function(nums, target) {
-     let i = 0;
-    let count = 0;
-    nums = nums.sort((a,b)=>a-b);
-    let j = nums.length - 1;
-    let sum;
-    while(i < j){
-        sum = nums[i] + nums[j]; 
-        if(sum >= target){
-            j = j - 1;
-        }
-        else {
-            count = count + (j - i);
-            i++;
+     let count = 0;
+    for(let i=0; i<nums.length; i++) {
+        for(let j=i+1; j<nums.length; j++) {
+            if(nums[i]+nums[j] < target) count++;
         }
     }
     return count;
